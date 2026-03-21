@@ -1,4 +1,6 @@
-import ExploreBtn from "@/app/components/ExploreBtn";
+import ExploreBtn from "@/components/ExploreBtn";
+import EventCard from "../components/EventCard";
+import events from "@/lib/constants";
 
 const Home = async () => {
   const response = await fetch("http://localhost:3000/api/books");
@@ -15,8 +17,10 @@ const Home = async () => {
       <ExploreBtn />
       <h3 className="mt-20 space-y-7">Featured Events</h3>
       <ul className="events">
-        {[1, 2, 3, 4, 5].map((event, i) => (
-          <li key={i}>Event {event}</li>
+        {events.map((event, i) => (
+          <li key={event.title}>
+            <EventCard {...event} />
+          </li>
         ))}
       </ul>
     </section>
